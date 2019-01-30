@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="myApp">
+<head>
+    <title>Compound Interest Finder</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<link rel="stylesheet" href="/compound-interest-from-annual-ROI/style.css">
+<body ng-controller="myCtrl">
+
+    <p>An annual Return of...
+        <select ng-model="annualReturnChoice" ng-change="annualReturnSelected()">
+            <!-- <option ng-repeat="x in annualReturnOptions">{{ x + "%"}}</option> -->
+            <option ng-repeat="x in annualReturnOptions">{{ x + "%" }}</option>
+        </select>
+    </p>
+
+    <p>Requires an average 
+        <select ng-model="paymentPeriodChoice" ng-change="paymentPeriodSelected()">
+                <option ng-repeat="x in paymentPeriods">{{ x.desc }}</option>
+        </select>
+        Return of... <b>{{ ratePerPeriodOutput}}</b>
+    </p>
+
+    <hr>
+
+    <button ng-click="showPayPeriodGrowth()">{{ showTableHidden[1] }}</button>
+    <br/><br/>
+    <div>{{ showButtonMessage }}</div>
+    <table ng-hide="showTableHidden[0]" class="data-modeling">
+        <tr>
+            <th>Period</th>
+            <th>Start</th>
+            <th>Growth (long form)</th>
+            <th>Closing</th>
+        </tr>
+        <tr ng-repeat="record in growthModelData">
+            <td>{{ record.period }}</td>
+            <td>{{ record.startValue | currency }}</td>
+            <td>{{ record.growthAmt | currency }} ({{ record.growthAmt }}...) </td>
+            <td>{{ record.closeValue | currency }}</td>
+        </tr>
+    </table>
+
+    <!-- Putting down in body best practice so has rest of elements in DOM to manipulate. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular.min.js"></script>
+    <script src="/compound-interest-from-annual-ROI/mathController.js"></script>
+
+</body>
+</html>

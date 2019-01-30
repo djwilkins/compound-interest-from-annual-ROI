@@ -1,0 +1,37 @@
+p, table {
+  font-size: 20px;
+}
+
+select, button {
+  font-size: 15px;
+}
+
+table {
+    border-collapse: collapse;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 1px) and (max-width: 800px) {
+    p, table {
+      width: 80%;
+    }
+  }
+  @media screen and (min-width: 801px) and (max-width: 1149px) {
+    p, table {
+      width: 70%;
+    }
+  }
+  @media screen and (min-width: 1150px) and (max-width: 1450px) {
+    p, table {
+      width: 60%;
+    }
+  }
+  @media screen and (min-width: 1451px) {
+    p, table {
+      width: 50%;
+    }
+  }
